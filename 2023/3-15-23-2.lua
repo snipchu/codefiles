@@ -1,3 +1,6 @@
+-- This lua code converts Celcius to Fahrenheit and vice versa
+-- Also a solution to an assignment in my python class
+
 local function getinput(text)
 	io.write(text)
 	return tonumber(io.read())

@@ -1,3 +1,5 @@
+-- This lua code is a solution to day 2 of AoC 2015
+
 local file = io.open("day2.txt", "r")
 local a = { nil, nil, nil }
 local counter = 1

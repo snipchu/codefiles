@@ -1,3 +1,5 @@
+-- This lua code is a solution to day 3 of AoC 2015
+
 local coords = { 0, 0 }
 local allcoords = {}
 local file = io.open("day3.txt", "r")

@@ -1,3 +1,5 @@
+-- This lua code is a solution to day 1 of AoC 2015
+
 local sum = 0
 local file = io.open("day1.txt", "r")
 file = file:read("*all")

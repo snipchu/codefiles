@@ -1,3 +1,6 @@
+-- This lua code is a solution to an assignment in my python class
+-- It combines the measurements of 2 'planks', then converts it to the right numbers
+
 -- function to get input of measurement
 local function getinput(lengthtype)
 	io.write("Enter the " .. lengthtype)

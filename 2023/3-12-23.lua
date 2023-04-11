@@ -1,3 +1,6 @@
+-- This lua code a solution to an assignemnt in my python class
+-- It plays rock-paper-scissors with you, for 1 or 3 rounds
+
 local wins = 0
 local loses = 0
 

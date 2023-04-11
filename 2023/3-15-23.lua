@@ -1,3 +1,7 @@
+-- This lua code is a solution to an assignment in my python class
+-- It asks how many numbers you want to check are divisble by 3
+-- then prints how many were (not) divisible by 3
+
 -- get input as a function (bc im lazy)
 local function getinput(text)
 	io.write(text)

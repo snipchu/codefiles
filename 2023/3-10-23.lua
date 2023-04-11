@@ -1,3 +1,7 @@
+-- This lua code is a solution to an assignment in my python class
+-- It takes in input for some of the sides to a irregular shape
+-- Then it prints out the area and perimeter of the shape based on those measurements
+
 -- this function asks for side input and reads the input
 local function getsides(letter)
 	io.write("Enter side " .. letter .. ": ")
