@@ -1,2 +1,2 @@
-# CodeFiles
-this is where i put all my code :D
+# codefiles
+this reposity is just various small codes and solutions i've made
