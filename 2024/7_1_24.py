@@ -1,3 +1,8 @@
+# 7/1/2024
+# made for Hack Club's Arcade
+# It's just a simple scuffed snake game
+# WASD to move
+
 import keyboard, os, time, random
 board = [[' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . '],
         [' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . '],
@@ -9,21 +14,16 @@ board = [[' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . '],
         [' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . '],
         [' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . '],
         [' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ']]
-# Y, X, length
-snake = [4,4]
-snakelen = 3
+# Y,X coordinates
+snake = [5,2]
+apple = [5,7]
+# Y,X coordinates, 1 = down/right, -1 = up/left
+direction = [0,1]
 # all coordinates of snake
-snakebody = [[4,4]]
-# Y, X
-direction = [1,0]
-while True:
-    # clear board
-    os.system('cls')
-    os.system('clear')
-    # reset board
-    for i in range(10):
-        board[i] = [' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ']
+snakebody = [[5,2]]
+snakelen = 3
 
+while True:
     # user input
     if keyboard.is_pressed('w') and direction != [1,0]:
         direction = [-1,0]
@@ -41,11 +41,16 @@ while True:
     while len(snakebody) > snakelen:
         snakebody.pop()
 
+    # apple code
+    board[apple[0]][apple[1]] = " @ "
+    if snake == apple:
+        snakelen += 1
+        apple = [random.randint(0,9),random.randint(0,9)]
+
     # print snake to board
-    print(snake)
-    if (snake[0] > 0 and snake[1] > 0) and (snake[0] < 10 and snake[1] < 10):
+    if (snake[0] >= 0 and snake[1] >= 0) and (snake[0] < 10 and snake[1] < 10):
         for i in range(len(snakebody)):
-            board[snakebody[i][0]][snakebody[i][1]] = " o "
+            board[snakebody[i][0]][snakebody[i][1]] = " # "
     else:
         break
 
@@ -54,8 +59,16 @@ while True:
         for letter in line:
             print(letter, end="")
         print()
-    time.sleep(.5)
+    print(f"\tScore: {snakelen-3}")
+    
+    # clear board
+    time.sleep(.15)
+    os.system('cls')
+    os.system('clear')
+    
+    # reset board
+    for i in range(10):
+        board[i] = [' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ', ' . ']
 
-os.system('cls')
-os.system('clear')
-print("You lost :(")
+
+print(f"\tScore: {snakelen-3}")
