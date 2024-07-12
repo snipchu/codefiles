@@ -10,24 +10,35 @@
   
   <body>
     <aside id="mp3player">
+      <!-- Top bar -->
       <div>
-        <p>Filler text</p>
-        <p>Filler text</p>
+        <p>date</p>
+        <p>time</p>
+        <img src="">
+      </div>
+      <!-- Main display -->
+      <div>
+        <p>Title</p>
+        <p>Artist</p>
         <audio id="mp3audio" ontimeupdate="progbarupdate()" onended="changesong(1)">
           <source id="mp3src" src="./September.mp3" type="audio/mpeg">
         </audio>
         <p>
-          <span>Filler text</span>
+          <span>Value</span>
           <progress id="progbar" value="0" max="100"></progress>
-          <span>Filler text</span>
+          <span>Max</span>
         </p>
+        <p>Index</p>
       </div>
+      <!-- Buttons -->
       <div>
         <button type="button" onClick="toggleplay()"><i class="nf mp3playbutton nf-fa-play"></i></button>
         <button type="button" onClick="changesong(1)"><i class="nf nf-fa-angle_up"></i></button>
         <button type="button" onClick="changesong(-1)"><i class="nf nf-fa-angle_down"></i></button>
         <button type="button" onClick="changevol(.2)"><i class="nf nf-fa-plus"></i></button>
         <button type="button" onClick="changevol(-.2)"><i class="nf nf-fa-minus"></i></button>
+        <button type="button" onClick="toggleloop()"><i class="nf mp3loopbutton nf-md-repeat"></i></button>
+        <button type="button" onClick="toggleshuffle()"><i class="nf nf-md-shuffle"></i></button>
       </div>
       <script>changesong(0);</script>
     </aside>
