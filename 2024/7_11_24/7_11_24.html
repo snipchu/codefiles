@@ -12,8 +12,9 @@
     <aside id="mp3player">
       <div>
         <p>Filler text</p>
-        <audio id="mp3audio" ontimeupdate="progbarupdate()">
-          <source src="./Spunky.mp3" type="audio/mpeg">
+        <p>Filler text</p>
+        <audio id="mp3audio" ontimeupdate="progbarupdate()" onended="changesong(1)">
+          <source id="mp3src" src="./September.mp3" type="audio/mpeg">
         </audio>
         <p>
           <span>Filler text</span>
@@ -23,11 +24,12 @@
       </div>
       <div>
         <button type="button" onClick="toggleplay()"><i class="nf mp3playbutton nf-fa-play"></i></button>
-        <button type="button" onClick="changevol(.2)"><i class="nf nf-fa-angle_up"></i></button>
-        <button type="button" onClick="changevol(-.2)"><i class="nf nf-fa-angle_down"></i></button>
-        <button type="button" onClick="changesong(1)"><i class="nf nf-fa-plus"></i></button>
-        <button type="button" onClick="changesong(-1)"><i class="nf nf-fa-minus"></i></button>
+        <button type="button" onClick="changesong(1)"><i class="nf nf-fa-angle_up"></i></button>
+        <button type="button" onClick="changesong(-1)"><i class="nf nf-fa-angle_down"></i></button>
+        <button type="button" onClick="changevol(.2)"><i class="nf nf-fa-plus"></i></button>
+        <button type="button" onClick="changevol(-.2)"><i class="nf nf-fa-minus"></i></button>
       </div>
+      <script>changesong(0);</script>
     </aside>
   </body>
 
