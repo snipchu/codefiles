@@ -25,7 +25,13 @@ function toggleloop() {
 }
 shuffled = false;
 function toggleshuffle() { shuffled = !shuffled; }
-function changevol(amount) { mp3audio.volume += amount; }
+function changevol(amount) {
+  mp3audio.volume += amount;
+  mp3playerbottom = document.getElementById("mp3playerbottom");
+  mp3volume = mp3audio.volume.toFixed(2)*100;
+  mp3playerbottom.firstElementChild.nextElementSibling.innerHTML = mp3volume+"%";
+  mp3playerbottom.firstElementChild.style.clipPath = "polygon(0 0, "+mp3volume+"% 0%, "+mp3volume+"% 100%, 0% 100%)";
+}
 function numtotime(num) {
   min = Math.floor(num/60);
   sec = Math.floor(num%60);
@@ -37,7 +43,7 @@ function numtotime(num) {
 function progbarupdate() {
   progbar = document.getElementById("progbar");
   progbar.value = mp3audio.currentTime/mp3audio.duration * 100;
-  progbar.previousElementSibling.innerHTML = numtotime(mp3audio.currentTime);
+  progbar.nextElementSibling.firstElementChild.innerHTML = numtotime(mp3audio.currentTime);
 }
 function changesong(index) {
   // play next song
@@ -53,8 +59,17 @@ function changesong(index) {
     if (index != 0) { mp3audio.play(); }
     mp3audio.previousElementSibling.innerHTML = songlist[songindex][0];
     mp3audio.previousElementSibling.previousElementSibling.innerHTML = songlist[songindex][1];
-    mp3audio.parentElement.lastElementChild.innerHTML = (songindex+1)+"/"+(songlist.length);
-    progbar.nextElementSibling.innerHTML = numtotime(mp3audio.duration);
+    progbar.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = (songindex+1)+"/"+(songlist.length);
+    progbar.nextElementSibling.lastElementChild.innerHTML = numtotime(mp3audio.duration);
     progbarupdate();
   };
 }
+
+function updatetime() {
+  mp3playertop = document.getElementById("mp3playertop");
+  todaysdate = new Date();
+  // Please don't question my sanity
+  mp3playertop.firstElementChild.innerHTML = (todaysdate.getMonth()+1)+"/"+String(todaysdate.getDate()).padStart(2, "0")+"/"+todaysdate.getFullYear();
+  mp3playertop.firstElementChild.nextElementSibling.innerHTML = String(todaysdate.getHours()).padStart(2,"0")+":"+String(todaysdate.getMinutes()).padStart(2,"0");
+}
+setInterval(updatetime, 1000);

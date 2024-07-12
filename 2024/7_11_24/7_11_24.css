@@ -3,3 +3,6 @@
 #mp3player {
   border: 1px solid black;
 }
+#mp3playerbottom:first-child {
+  clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+}

@@ -10,37 +10,48 @@
   
   <body>
     <aside id="mp3player">
-      <!-- Top bar -->
-      <div>
+      <!-- Top display -->
+      <div id="mp3playertop">
         <p>date</p>
         <p>time</p>
-        <img src="">
+        <img src=""> <!-- battery png -->
       </div>
       <!-- Main display -->
-      <div>
+      <div id="mp3playermain">
         <p>Title</p>
         <p>Artist</p>
         <audio id="mp3audio" ontimeupdate="progbarupdate()" onended="changesong(1)">
           <source id="mp3src" src="./September.mp3" type="audio/mpeg">
         </audio>
+        <progress id="progbar" value="0" max="100"></progress>
         <p>
           <span>Value</span>
-          <progress id="progbar" value="0" max="100"></progress>
+          <span>Index</span>
           <span>Max</span>
         </p>
-        <p>Index</p>
+        <div></div>
+      </div>
+      <!-- Bottom display -->
+      <div id="mp3playerbottom">
+        <img src="./audiobar.png">
+        <p>100%</p>
+        <i class="nf nf-md-shuffle"></i>
+        <i class="mp3loopbutton nf nf-md-repeat"></i>
       </div>
       <!-- Buttons -->
-      <div>
+      <div id="mp3playerbuttons">
         <button type="button" onClick="toggleplay()"><i class="nf mp3playbutton nf-fa-play"></i></button>
         <button type="button" onClick="changesong(1)"><i class="nf nf-fa-angle_up"></i></button>
         <button type="button" onClick="changesong(-1)"><i class="nf nf-fa-angle_down"></i></button>
         <button type="button" onClick="changevol(.2)"><i class="nf nf-fa-plus"></i></button>
         <button type="button" onClick="changevol(-.2)"><i class="nf nf-fa-minus"></i></button>
-        <button type="button" onClick="toggleloop()"><i class="nf mp3loopbutton nf-md-repeat"></i></button>
+        <button type="button" onClick="toggleloop()"><i class="nf nf-md-repeat"></i></button>
         <button type="button" onClick="toggleshuffle()"><i class="nf nf-md-shuffle"></i></button>
       </div>
-      <script>changesong(0);</script>
+      <script>
+        changesong(0);
+        updatetime();
+      </script>
     </aside>
   </body>
 
