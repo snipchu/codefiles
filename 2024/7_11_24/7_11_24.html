@@ -10,33 +10,39 @@
   
   <body>
     <aside id="mp3player">
-      <!-- Top display -->
-      <div id="mp3playertop">
-        <p>date</p>
-        <p>time</p>
-        <img src=""> <!-- battery png -->
-      </div>
-      <!-- Main display -->
-      <div id="mp3playermain">
-        <p>Title</p>
-        <p>Artist</p>
-        <audio id="mp3audio" ontimeupdate="progbarupdate()" onended="changesong(1)">
-          <source id="mp3src" src="./September.mp3" type="audio/mpeg">
-        </audio>
-        <progress id="progbar" value="0" max="100"></progress>
-        <p>
-          <span>Value</span>
-          <span>Index</span>
-          <span>Max</span>
-        </p>
-        <div></div>
-      </div>
-      <!-- Bottom display -->
-      <div id="mp3playerbottom">
-        <img src="./audiobar.png">
-        <p>100%</p>
-        <i class="nf nf-md-shuffle"></i>
-        <i class="mp3loopbutton nf nf-md-repeat"></i>
+      <div>
+        <!-- Top display -->
+        <div id="mp3playertop">
+          <p>date</p>
+          <p>time</p>
+          <img src="./battery.png">
+        </div>
+        <hr>
+        <!-- Main display -->
+        <div id="mp3playermain">
+          <p>Title</p>
+          <address class="author">Artist</address>
+          <audio id="mp3audio" ontimeupdate="progbarupdate()" onended="changesong(1)">
+            <source id="mp3src" src="./September.mp3" type="audio/mpeg">
+          </audio>
+          <hr>
+          <progress id="progbar" value="0" max="100"></progress>
+          <p>
+            <span>Value</span>
+            <span>Index</span>
+            <span>Max</span>
+          </p>
+        </div>
+        <hr>
+        <!-- Bottom display -->
+        <div id="mp3playerbottom">
+          <figure>
+            <img src="./audiobar.png">
+            <figcaption>100%</figcaption>
+          </figure>
+          <i class="nf nf-md-shuffle"></i>
+          <i class="mp3loopbutton nf nf-md-repeat"></i>
+        </div>
       </div>
       <!-- Buttons -->
       <div id="mp3playerbuttons">

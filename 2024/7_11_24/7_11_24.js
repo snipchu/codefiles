@@ -29,8 +29,8 @@ function changevol(amount) {
   mp3audio.volume += amount;
   mp3playerbottom = document.getElementById("mp3playerbottom");
   mp3volume = mp3audio.volume.toFixed(2)*100;
-  mp3playerbottom.firstElementChild.nextElementSibling.innerHTML = mp3volume+"%";
-  mp3playerbottom.firstElementChild.style.clipPath = "polygon(0 0, "+mp3volume+"% 0%, "+mp3volume+"% 100%, 0% 100%)";
+  mp3playerbottom.firstElementChild.lastElementChild.innerHTML = mp3volume+"%";
+  mp3playerbottom.firstElementChild.firstElementChild.style.clipPath = "polygon(0 0, "+mp3volume+"% 0%, "+mp3volume+"% 100%, 0% 100%)";
 }
 function numtotime(num) {
   min = Math.floor(num/60);

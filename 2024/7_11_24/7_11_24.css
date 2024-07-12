@@ -2,7 +2,32 @@
 
 #mp3player {
   border: 1px solid black;
+  border-radius: 1.25rem;
+  padding: .75rem; font-family: sans-serif;
+  background-color: #1a1a1a;
 }
+#mp3player>div:first-child {
+  border: 1rem solid #404040;
+  border-bottom-width: 2rem;
+  border-radius: 1rem;
+  background-color: black;
+  color: white;
+}
+#mp3player>div>*:not(hr) {padding: .25rem;}
+#mp3player>div:first-child hr {color: #0099ff; margin: 0;}
+#mp3playertop, #mp3playerbottom, #progbar+p { display: flex; align-items: baseline; justify-content: space-between;}
+#mp3playertop *, #mp3playerbottom * {margin: 0; display: inline-block;}
+
+#mp3playertop {
+  padding: .25rem;
+}
+#progbar {
+  width: 100%;
+}
+progress::-webkit-progress-value {
+  background-color: #0099ff;
+}
+#progbar+p {margin: 0;}
 #mp3playerbottom:first-child {
   clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
 }
