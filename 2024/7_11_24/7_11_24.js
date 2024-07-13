@@ -1,27 +1,21 @@
 const songlist = [
   ["September", "Earth, Wind & Fire", "./September.mp3"],
   ["Harvey","Her's","./Harvey.mp3"],
-  ["Spunky (Makoto's Stage)","Hideki Okugawa","./Spunky.mp3"]
+  ["Spunky (Makoto's Stage)","Hideki Okugawa","./Spunky.mp3"],
+  ["Get Down On It", "Kool & The Gang", "./GetDownOnIt.mp3"]
 ]
-let songindex = 0;
+songindex = 0;
+
 function toggleplay() {
   mp3audio = document.getElementById("mp3audio");
   mp3playbutton = document.querySelector(".mp3playbutton");
-  if (mp3audio.paused) { 
-    mp3playbutton.classList.replace("nf-fa-play", "nf-fa-pause");
-  } else {
-    mp3playbutton.classList.replace("nf-fa-pause", "nf-fa-play");
-  }
+  mp3audio.paused ? mp3playbutton.classList.replace("nf-fa-play", "nf-fa-pause") : mp3playbutton.classList.replace("nf-fa-pause", "nf-fa-play");
   mp3audio.paused ? mp3audio.play() : mp3audio.pause();
 }
 function toggleloop() {
   mp3loopbutton = document.getElementById("mp3playerbottom").querySelector(".mp3loopbutton");
   mp3audio.loop = !(mp3audio.loop);
-  if (mp3audio.loop) {
-    mp3loopbutton.classList.replace("nf-md-repeat","nf-md-repeat_once");
-  } else {
-    mp3loopbutton.classList.replace("nf-md-repeat_once","nf-md-repeat");
-  }
+  mp3audio.loop ? mp3loopbutton.classList.replace("nf-md-repeat","nf-md-repeat_once") : mp3loopbutton.classList.replace("nf-md-repeat_once","nf-md-repeat");
 }
 shuffled = false;
 function toggleshuffle() { 
@@ -37,18 +31,14 @@ function changevol(amount) {
   mp3playerbottom.firstElementChild.firstElementChild.style.clipPath = "polygon(0 0, "+mp3volume+"% 0%, "+mp3volume+"% 100%, 0% 100%)";
 }
 function numtotime(num) {
-  min = Math.floor(num/60);
-  sec = Math.floor(num%60);
-  if (sec<10) {
-    sec = "0"+sec;
-  }
-  return min+":"+sec;
+  return Math.floor(num/60)+":"+String(Math.floor(num%60)).padStart(2,"0");
 }
 function progbarupdate() {
   progbar = document.getElementById("progbar");
   progbar.value = mp3audio.currentTime/mp3audio.duration * 100;
   progbar.nextElementSibling.firstElementChild.innerHTML = numtotime(mp3audio.currentTime);
 }
+
 function changesong(index) {
   // play next song
   mp3src = document.getElementById("mp3src");
@@ -61,8 +51,9 @@ function changesong(index) {
   // update html after audio loads
   mp3audio.onloadedmetadata = function() {
     if (index != 0) { mp3audio.play(); }
+    mp3playermain = document.getElementById("mp3playermain");
     mp3audio.previousElementSibling.innerHTML = songlist[songindex][1];
-    mp3audio.previousElementSibling.previousElementSibling.innerHTML = songlist[songindex][0];
+    mp3playermain.firstElementChild.innerHTML = songlist[songindex][0];
     progbar.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = (songindex+1)+"/"+(songlist.length);
     progbar.nextElementSibling.lastElementChild.innerHTML = numtotime(mp3audio.duration);
     progbarupdate();
@@ -72,7 +63,6 @@ function changesong(index) {
 function updatetime() {
   mp3playertop = document.getElementById("mp3playertop");
   todaysdate = new Date();
-  // Please don't question my sanity
   mp3playertop.firstElementChild.innerHTML = (todaysdate.getMonth()+1)+"/"+String(todaysdate.getDate()).padStart(2, "0")+"/"+todaysdate.getFullYear();
   mp3playertop.firstElementChild.nextElementSibling.innerHTML = String(todaysdate.getHours()).padStart(2,"0")+":"+String(todaysdate.getMinutes()).padStart(2,"0");
 }
