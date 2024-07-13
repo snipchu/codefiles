@@ -15,7 +15,7 @@ function toggleplay() {
   mp3audio.paused ? mp3audio.play() : mp3audio.pause();
 }
 function toggleloop() {
-  mp3loopbutton = document.querySelector(".mp3loopbutton");
+  mp3loopbutton = document.getElementById("mp3playerbottom").querySelector(".mp3loopbutton");
   mp3audio.loop = !(mp3audio.loop);
   if (mp3audio.loop) {
     mp3loopbutton.classList.replace("nf-md-repeat","nf-md-repeat_once");
@@ -24,7 +24,11 @@ function toggleloop() {
   }
 }
 shuffled = false;
-function toggleshuffle() { shuffled = !shuffled; }
+function toggleshuffle() { 
+  shuffled = !shuffled;
+  mp3shuffle = document.getElementById("mp3playerbottom").querySelector(".nf-md-shuffle");
+  shuffled ? mp3shuffle.style.color = "#0099ff" : mp3shuffle.style.color = "white";
+}
 function changevol(amount) {
   mp3audio.volume += amount;
   mp3playerbottom = document.getElementById("mp3playerbottom");
@@ -57,8 +61,8 @@ function changesong(index) {
   // update html after audio loads
   mp3audio.onloadedmetadata = function() {
     if (index != 0) { mp3audio.play(); }
-    mp3audio.previousElementSibling.innerHTML = songlist[songindex][0];
-    mp3audio.previousElementSibling.previousElementSibling.innerHTML = songlist[songindex][1];
+    mp3audio.previousElementSibling.innerHTML = songlist[songindex][1];
+    mp3audio.previousElementSibling.previousElementSibling.innerHTML = songlist[songindex][0];
     progbar.nextElementSibling.firstElementChild.nextElementSibling.innerHTML = (songindex+1)+"/"+(songlist.length);
     progbar.nextElementSibling.lastElementChild.innerHTML = numtotime(mp3audio.duration);
     progbarupdate();

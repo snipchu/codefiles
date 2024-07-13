@@ -46,13 +46,15 @@
       </div>
       <!-- Buttons -->
       <div id="mp3playerbuttons">
-        <button type="button" onClick="toggleplay()"><i class="nf mp3playbutton nf-fa-play"></i></button>
-        <button type="button" onClick="changesong(1)"><i class="nf nf-fa-angle_up"></i></button>
-        <button type="button" onClick="changesong(-1)"><i class="nf nf-fa-angle_down"></i></button>
-        <button type="button" onClick="changevol(.2)"><i class="nf nf-fa-plus"></i></button>
-        <button type="button" onClick="changevol(-.2)"><i class="nf nf-fa-minus"></i></button>
         <button type="button" onClick="toggleloop()"><i class="nf nf-md-repeat"></i></button>
         <button type="button" onClick="toggleshuffle()"><i class="nf nf-md-shuffle"></i></button>
+        <div>
+          <button type="button" onClick="toggleplay()"><i class="nf mp3playbutton nf-fa-play"></i></button>
+          <button type="button" onClick="changevol(.2)"><i class="nf nf-fa-plus"></i></button>
+          <button type="button" onClick="changevol(-.2)"><i class="nf nf-fa-minus"></i></button>
+          <button type="button" onClick="changesong(1)"><i class="nf nf-fa-angle_left"></i></button>
+          <button type="button" onClick="changesong(-1)"><i class="nf nf-fa-angle_right"></i></button>
+        </div>
       </div>
       <script>
         changesong(0);
