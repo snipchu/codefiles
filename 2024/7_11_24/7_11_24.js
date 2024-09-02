@@ -1,3 +1,4 @@
+// order of songs: Title, Artist, Audio location
 const songlist = [
   ["September", "Earth, Wind & Fire", "./September.mp3"],
   ["Harvey","Her's","./Harvey.mp3"],
