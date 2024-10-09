@@ -61,35 +61,38 @@ public class stacks
         Scanner in = new Scanner(new File("foo.txt"));
         String mathsym = "-+*/";
         for (int i=0; i<6; i++) {
+	    double sum = 0;
             String mack = in.nextLine();
             String[] holymackeral = mack.split(" ");
-            Stack<String> stack = new Stack<String>();
-            
-            System.out.println(mack + " = ");
-            for (int yay=0; yay<stack.size(); yay++) {
-                // check if next item is not an operator
-                if (mathsym.indexOf(holymackeral[yay]) == -1) {
-                    stack.push(holymackeral[yay]);
-                    System.out.println(holymackeral[yay]);
-                } else {
-                    double num1 = Integer.valueOf(stack.pop());
-                    double num2 = Integer.valueOf(stack.pop());
-                    switch (holymackeral[yay]) {
-                        case "-":
-                            System.out.println(num2-num1);
-                        case "+":
-                            System.out.println(num2+num1);
-                        case "*":
-                            System.out.println(num2*num1);
-                        case "/":
-                            System.out.println(num2/num1);
-                    }
-                }
+            Stack<Double> stack = new Stack<Double>();
+            System.out.print(mack + " = ");
+
+            for (int yay=0; yay<holymackeral.length; yay++) {
+		    if (mathsym.indexOf(holymackeral[yay]) == -1) {
+			    stack.push(Double.valueOf(holymackeral[yay]));
+		    } else {
+			    double num1 = stack.pop();
+			    double num2 = stack.pop();
+			    switch (holymackeral[yay]) {
+				    case "+":
+					    stack.push(num2+num1);
+					    break;
+				    case "-":
+					    stack.push(num2-num1);
+					    break;
+				    case "*":
+					    stack.push(num2*num1);
+					    break;
+				    case "/":
+					    stack.push(num2/num1);
+			    }
+		    }
             }
+	System.out.println(stack.peek());
         }
     }
     
-    public static void main() throws IOException { //2
+    public static void main(String[] args) throws IOException { //2
         postfixSolver();
     }
 }
