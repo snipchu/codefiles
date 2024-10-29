@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.Integer;
 
-public class Acronyms {
+public class SpEng {
 	public static void main(String[] args) throws IOException {
 		// make file scanner and map
 		Scanner input = new Scanner(new File("input.txt"));
@@ -13,7 +13,7 @@ public class Acronyms {
 
 		for (int i=0; i<numOfAcros; i++) {
 			// add acronyms to map
-			String[] currentline = input.nextLine().split(" - ");
+			String[] currentline = input.nextLine().split(" ");
 			mymap.put(currentline[0], currentline[1]);
 		}
 
